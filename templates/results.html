@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CROP RECOMMENDATION</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link href="{% static 'css/index.css' %}" rel="stylesheet"/>
+       <!-- Google Web Fonts -->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+       
+       <!-- Icon Font Stylesheet -->
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+   
+       <!-- Libraries Stylesheet -->
+       <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+       <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+   
+       <!-- Customized Bootstrap Stylesheet -->
+       <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+       <link href="{% static 'assets/css/index.css' %}" rel="stylesheet">
+</head>
+<body> <!-- Health center Start -->
+      <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center" style="background-color: black;">
+    <div class="container d-flex justify-content-between">
+
+      <div class="logo" style="padding-top:20px;padding-left: 20px ;">
+        <h1><a href="{% url 'index' %}" style="color: aliceblue;"><span>CROP</span> RECOMMENDER</a></h1>
+      
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+      
+     
+
+    </div>
+
+  </header><!-- End Header -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-light text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h6 class="mb-0">Recent Crop recommendations</h6>
+                <a href="">Show All</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr class="text-dark" style="color: black; ">
+                            <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                      
+                            <th scope="col">Date</th>
+                            <th scope="col">Nitrogen</th>
+                            <th scope="col">Phosphorus</th>
+                            <th scope="col">Potassium</th>
+                            <th scope="col">Temperature</th>
+                            <th scope="col">Humidity</th>
+                            <th scope="col">Soil pH</th>
+                            <th scope="col">Rainfall(mm)</th>
+                            <th scope="col">Crop supported</th>
+                            <th scope="col">Other crops</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in predicted_crop %}
+                        <tr>
+                            <td><input class="form-check-input" type="checkbox"></td>
+                  
+                            <td>{{ data.Taken_at}}</td>
+                            <td>{{data.Nitrogen}}</td>
+                            <td>{{data.Phosphorus}}</td>
+                            <td>{{data.Potassium}}</td>
+                            <td>{{data.Temperature}}</td>
+                            <td>{{data.Humidity}}</td>
+                            <td>{{data.Soil_pH}}</td>
+                            <td>{{data.Rainfall}}</td>
+                            <td>{{data.Crop_supported}}</td>
+                            <td>{{data.Other}}</td>
+                            <td><a class="btn btn-sm btn-primary" href="">view</a></td>
+                        </tr>
+                        {% endfor %}
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'lib/chart/chart.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+  <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+  <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+  <!-- Template Javascript -->
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
